@@ -289,7 +289,7 @@ class DatabaseAdapter implements Adapter, UpdatableAdapter, BatchAdapter, Filter
         } else {
             throw new InvalidFilterTypeException('invalid filter type');
         }
-        var_dump($instance->find(), $instance->all());
+        var_dump($instance->all());
         exit;
         $rows = $instance->find()->hidden(['id'])->toArray();
         foreach ($rows as $row) {
