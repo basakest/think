@@ -285,11 +285,13 @@ class DatabaseAdapter implements Adapter, UpdatableAdapter, BatchAdapter, Filter
                 $instance = $instance->where($v, $filter->g[$k]);
             }
         } elseif ($filter instanceof \Closure) {
+            var_dump($instance->where($filter));
+            exit;
             $instance = $instance->where($filter);
         } else {
             throw new InvalidFilterTypeException('invalid filter type');
         }
-        var_dump($instance->select()->hidden(['id'])->toArray(), $instance->find()->toArray());
+        // var_dump($instance->select()->hidden(['id'])->toArray(), $instance->find()->toArray());
         // exit;
         $rows = $instance->select()->hidden(['id'])->toArray();
         foreach ($rows as $row) {
